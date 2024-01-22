@@ -19,6 +19,12 @@ const HomeScreen = ({navigation}) => {
         <Text style={styles.buttonText}>Go to List Demo</Text>
     </TouchableOpacity>
 
+    <Button 
+      color="#f194ff" 
+      title="Go to Image Demo" 
+      onPress={() => navigation.navigate('Images') } 
+    />
+
   </View>
   );
 };
