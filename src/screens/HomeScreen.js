@@ -37,6 +37,12 @@ const HomeScreen = ({navigation}) => {
       onPress={() => navigation.navigate('Colors') } 
     />
 
+    <Button 
+      color="#f194ff" 
+      title="Go to Square Color Demo" 
+      onPress={() => navigation.navigate('Sqaure') } 
+    />
+
 
   </View>
   );
