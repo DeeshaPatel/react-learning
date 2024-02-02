@@ -62,14 +62,20 @@ import ColorCounter from "../components/ColorCounter";
 const reducer = (state, action) => {
     // state === {red: num, green: num, blue: num}
     // action === {colorToChange: 'red' || 'green' || 'blue', amount: 15 || -15}
-    switch(action.colorToChange) {
-        case 'red':
+
+    // Community conventional names
+    // colorToChange === type
+    // amount === payload
+
+
+    switch(action.type) {
+        case 'change_red':
             // ...state is a copy of exisiting state object so the value will be {red: 0, green:0, blue:0} initially
-            return state.red + action.amount > 255 || state.red + action.amount < 0 ? state : { ...state, red: state.red + action.amount };
-        case 'green':
-            return state.green + action.amount > 255 || state.green + action.amount < 0 ? state : { ...state, green: state.green + action.amount };
-        case 'blue':
-            return state.blue + action.amount > 255 || state.blue + action.amount < 0 ? state : { ...state, blue: state.blue + action.amount };
+            return state.red + action.payload > 255 || state.red + action.payload < 0 ? state : { ...state, red: state.red + action.payload };
+        case 'change_green':
+            return state.green + action.payload > 255 || state.green + action.payload < 0 ? state : { ...state, green: state.green + action.payload };
+        case 'change_blue':
+            return state.blue + action.payload > 255 || state.blue + action.payload < 0 ? state : { ...state, blue: state.blue + action.payload };
         default:
             return state;
     }
@@ -84,18 +90,18 @@ const SquareColor = () => {
     return (
         <View>
             <ColorCounter 
-                onInc={() => runMyReducer({ colorToChange: 'red', amount:  COLOR_VALUE})}
-                onDec={() => runMyReducer({ colorToChange: 'red', amount:  -1 * COLOR_VALUE})}
+                onInc={() => runMyReducer({ type: 'change_red', payload:  COLOR_VALUE})}
+                onDec={() => runMyReducer({ type: 'change_red', payload:  -1 * COLOR_VALUE})}
                 color = "red" 
             />
             <ColorCounter 
-                onInc={() => runMyReducer({ colorToChange: 'blue', amount:  COLOR_VALUE})}
-                onDec={() => runMyReducer({ colorToChange: 'blue', amount:  -1 * COLOR_VALUE})}
+                onInc={() => runMyReducer({ type: 'change_blue', payload:  COLOR_VALUE})}
+                onDec={() => runMyReducer({ type: 'change_blue', payload:  -1 * COLOR_VALUE})}
                 color = "blue" 
             />
             <ColorCounter 
-                onInc={() => runMyReducer({ colorToChange: 'green', amount:  COLOR_VALUE})}
-                onDec={() => runMyReducer({ colorToChange: 'green', amount:  -1 * COLOR_VALUE})}
+                onInc={() => runMyReducer({ type: 'change_green', payload:  COLOR_VALUE})}
+                onDec={() => runMyReducer({ type: 'change_green', payload:  -1 * COLOR_VALUE})}
                 color = "green" 
             />
             <View 
