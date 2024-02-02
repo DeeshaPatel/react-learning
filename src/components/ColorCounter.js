@@ -6,7 +6,7 @@ const ColorCounter = ({ color, onInc, onDec }) => {
         <View>
             <Text style={styles.textStyle}>{color}</Text>
             <Button onPress={() => onInc()} title={`Increase ${color}`}/>
-            <Button onPress={() => onDec} title={`Decrease ${color}`}/>
+            <Button onPress={() => onDec()} title={`Decrease ${color}`}/>
         </View>
     )
 };
